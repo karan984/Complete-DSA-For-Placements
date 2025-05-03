@@ -12,12 +12,8 @@ public class traverse{
     static Node insertAtBegin(Node head, int x){
         Node temp = new Node(x);
 
-        if(head==null){
-            head=temp;
-        }else{
-            temp.next=head;
-            head=temp;
-        }
+        temp.next=head;
+        head=temp;
 
         return head;
     }
