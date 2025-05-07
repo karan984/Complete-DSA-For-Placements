@@ -58,6 +58,16 @@ public class traverse{
 
         return head;
     }
+    static Node deleteAtBegin(Node head){
+        if(head==null){
+            return head;
+        }else{
+            Node temp=head;
+            head=head.next;
+            temp.next=null;
+            return head;
+        }
+    }
     static void traverse(Node head){
         Node temp = head;
         while(temp!=null){
@@ -92,6 +102,10 @@ public class traverse{
         head = insertAtPos(head, 400, 1);
         traverse(head);
         head = insertAtPos(head, 500, 15);
+        traverse(head);
+
+        head = deleteAtBegin(head);
+
         traverse(head);
         
     }
