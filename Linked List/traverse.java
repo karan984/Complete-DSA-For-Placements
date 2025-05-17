@@ -68,6 +68,45 @@ public class traverse{
             return head;
         }
     }
+    static Node deleteAtEnd(Node head){
+        if(head==null){
+            return null;
+        }else if(head.next==null){
+            return null;
+        }else{
+            Node t = head;
+            Node temp = null;
+
+            while(t.next.next!=null){
+                t=t.next;
+            }
+            temp=t.next;
+            t.next=null;
+            return head;
+        }
+    }
+    static Node deleteAtPos(Node head, int pos){
+        Node t = head;
+
+        if(pos==1){
+            head=deleteAtBegin(head);
+            return head;
+        }
+
+        for(int i=1; i<=pos-2; i++){
+            if(t==null){
+                break;
+            }
+            t=t.next;
+        }
+
+        if(t==null || t.next==null){
+            System.out.println("Invalid position to delete");
+            return head;
+        }
+        t.next=t.next.next;
+        return head;
+    }
     static void traverse(Node head){
         Node temp = head;
         while(temp!=null){
@@ -106,6 +145,12 @@ public class traverse{
 
         head = deleteAtBegin(head);
 
+        traverse(head);
+
+        head=deleteAtEnd(head);
+        traverse(head);
+
+        head = deleteAtPos(head, 5);
         traverse(head);
         
     }
